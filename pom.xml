@@ -8,6 +8,9 @@
         <module>myrocketmq</module>
         <module>dataStructure</module>
         <module>common</module>
+        <module>dubbo-interfaces</module>
+        <module>dubbo--service-provider</module>
+        <module>dubbo-service-consumer</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

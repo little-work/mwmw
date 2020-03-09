@@ -49,7 +49,7 @@ public class ReflectiveMethodInvocation implements MethodInvocation {
         return interceptor.invoke(this);
     }
 
-    //调用方法本身
+    //调用目标类中的被增强的方法
     private Object invokeJoinPoint() throws Throwable {
         return this.methodProxy.invokeSuper(this.targetObject,objects);
     }
