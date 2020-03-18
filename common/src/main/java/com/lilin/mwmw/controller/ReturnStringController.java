@@ -15,9 +15,6 @@ import java.util.Base64;
 @Slf4j
 public class ReturnStringController {
 
-    //@Autowired
-   // UserServiceConsumeImpl userServiceConsumeImpl;
-
     @RequestMapping(value = "test",method = RequestMethod.GET)
     public String test(){
         log.info("开始处理");
@@ -28,7 +25,6 @@ public class ReturnStringController {
         User user2=new User();
         user2.setUsername("lilin");
         return user2;
-        //return userServiceConsumeImpl.getUserById(id).getName();
     }
 
     public static void base64ToFile(String base64, String filePath, String fileName) {

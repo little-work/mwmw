@@ -15,7 +15,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.lilin</groupId>
@@ -67,15 +67,22 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
-        <!-- Spring Boot mybatis -->
+
+        <!-- alibaba的druid数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <version>1.1.9</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <!-- Spring Boot mybatis -->
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.0</version>
+            <version>2.1.1</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -94,63 +101,6 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- jsp标签库 -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-        </dependency>
-        <!--dubbo接口依赖包-->
-        <!--<dependency>
-            <groupId>com.lilin.dubbo</groupId>
-            <artifactId>db-interface</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>-->
-        <!--springboot dubbo启动依赖-->
-        <!-- Dubbo Spring Boot Starter -->
-        <dependency>
-            <groupId>com.alibaba.boot</groupId>
-            <artifactId>dubbo-spring-boot-starter</artifactId>
-            <version>0.2.1.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>dubbo</artifactId>
-            <version>2.6.5</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.47</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.curator</groupId>
-            <artifactId>curator-framework</artifactId>
-            <version>2.12.0</version>
-        </dependency>
-
-        <!--普通spring的方式配置dubbo-->
-        <!--<dependency>-->
-        <!--<groupId>com.alibaba</groupId>-->
-        <!--<artifactId>dubbo</artifactId>-->
-        <!--<version>2.6.2</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.101tec</groupId>-->
-        <!--<artifactId>zkclient</artifactId>-->
-        <!--<version>0.10</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.curator</groupId>-->
-        <!--<artifactId>curator-framework</artifactId>-->
-        <!--<version>4.0.1</version>-->
-        <!--<type>bundle</type>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.curator</groupId>-->
-        <!--<artifactId>curator-recipes</artifactId>-->
-        <!--<version>4.0.1</version>-->
-        <!--<type>bundle</type>-->
-        <!--</dependency>-->
 
     </dependencies>
 

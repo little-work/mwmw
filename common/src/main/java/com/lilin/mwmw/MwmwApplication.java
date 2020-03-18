@@ -1,4 +1,4 @@
-package com.lilin;
+package com.lilin.mwmw;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;

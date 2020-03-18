@@ -10,7 +10,7 @@ import java.lang.annotation.*;
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-public @interface DataSource {
+public @interface TargetDataSource {
 
     /**
      * 数据源key值

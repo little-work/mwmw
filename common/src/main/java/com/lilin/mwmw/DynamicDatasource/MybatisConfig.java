@@ -1,8 +1,9 @@
 package com.lilin.mwmw.DynamicDatasource;
 
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
+    import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -44,7 +45,7 @@ public class MybatisConfig {
     }
 
     @Bean
-    public SqlSessionFactoryBean sqlSessionFactoryBean() throws Exception {
+    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
         SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 
         /**
@@ -56,8 +57,8 @@ public class MybatisConfig {
         sessionFactory.setDataSource(dynamicDataSource());
         sessionFactory.setTypeAliasesPackage("com.lilin.mwmw.bo");    // 扫描Model
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sessionFactory.setMapperLocations(resolver.getResources("classpath*:mybatis/mapper/*.xml"));    // 扫描映射文件
-        return sessionFactory;
+        sessionFactory.setMapperLocations(resolver.getResources("classpath*:mapper/*.xml"));    // 扫描映射文件
+        return sessionFactory.getObject();
     }
 
     @Bean(name="tx")

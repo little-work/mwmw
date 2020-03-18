@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 //@Configuration
 @ComponentScan("com.lilin.mwmw.bo")
 //加载外部配置文件  保存到运行的环境变量中
-@PropertySource(value = {"classpath:/application.properties"})
+@PropertySource(value = {"classpath:/application-dev.properties"})
 public class Configration2 {
 
     //@Qualifier("initBean")
