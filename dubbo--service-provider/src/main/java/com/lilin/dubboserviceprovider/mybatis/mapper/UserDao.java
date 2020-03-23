@@ -1,6 +1,7 @@
 package com.lilin.dubboserviceprovider.mybatis.mapper;
 
-import com.lilin.dubboserviceprovider.mybatis.entity.UserInfo;
+
+import com.lilin.interfaces.entity.UserInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

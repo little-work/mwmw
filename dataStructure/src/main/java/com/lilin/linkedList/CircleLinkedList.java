@@ -1,4 +1,4 @@
-package com.lilin.mwmw.dataStructure.linkedList;
+package com.lilin.linkedList;
 
 public class CircleLinkedList {
 
@@ -10,6 +10,7 @@ public class CircleLinkedList {
 
         cll.list();
         cll.josepFu(2,2);
+
 
     }
 

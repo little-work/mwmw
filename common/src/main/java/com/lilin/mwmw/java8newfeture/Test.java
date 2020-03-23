@@ -15,11 +15,11 @@ public class Test {
          *
          *
          */
-        FuncitonInterface<Person> f=Person::new;
-        Person p=f.getObject();
-
-        FuncitonInterface<User> f2=()->new User();
-        User user=f2.getObject();
+//        FuncitonInterface<Person> f=Person::new;
+//        Person p=f.getObject();
+//
+//        FuncitonInterface<User> f2=()->new User();
+//        User user=f2.getObject();
 
 
         /**
@@ -32,14 +32,24 @@ public class Test {
         /**
          * 普通方法引用
          */
-       /* FuncitonInterface<RefClass> f3=RefClass::new;
-        RefClass refClass=f3.getObject();
+//        FuncitonInterface<RefClass> f3=RefClass::new;
+//        RefClass refClass=f3.getObject();
+        RefClass refClass=new RefClass();
         RefInterface refInterface2=refClass::add;
-        System.out.println(refInterface2.add(3,7));*/
+        System.out.println(refInterface2.add(3,7));
 
 
-
-
+        /**
+         *
+         */
+        adddddd(refClass::add);
 
     }
+
+
+    public static int adddddd(RefInterface refInterface){
+        return refInterface.add(2,5);
+    }
+
+
 }

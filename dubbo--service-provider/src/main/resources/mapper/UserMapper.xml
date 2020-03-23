@@ -5,7 +5,7 @@
 
 <mapper namespace="com.lilin.dubboserviceprovider.mybatis.mapper.UserDao">
 
-    <select id="findUser" resultType="com.lilin.dubboserviceprovider.mybatis.entity.UserInfo">
+    <select id="findUser" resultType="com.lilin.interfaces.entity.UserInfo">
         select * from user
     </select>
 

@@ -1,5 +1,4 @@
-
-package com.lilin.mwmw.dataStructure;
+package com.lilin;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -19,7 +19,25 @@
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.lilin</groupId>
+            <artifactId>dubbo-interfaces</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <!-- Dubbo -->
+        <dependency>
+            <groupId>com.alibaba.boot</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>0.2.0</version>
+        </dependency>
 
+        <!-- Zookeeper -->
+        <!--<dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.6</version>
+            <type>pom</type>
+        </dependency>-->
     </dependencies>
 
     <build>

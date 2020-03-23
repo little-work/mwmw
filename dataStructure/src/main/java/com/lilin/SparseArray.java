@@ -1,4 +1,4 @@
-package com.lilin.mwmw.dataStructure;
+package com.lilin;
 
 public class SparseArray {
 

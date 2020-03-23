@@ -1,4 +1,4 @@
-package com.lilin.mwmw.dataStructure.linkedList;
+package com.lilin.linkedList;
 
 
 /**

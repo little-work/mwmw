@@ -1,0 +1,26 @@
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <!--dubbo应用名称-->
+    <dubbo:application name="demo-provider"/>
+
+    <!--注册中心的地址-->
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <!--dubbo协议-->
+    <dubbo:protocol name="dubbo" port="20882"/>
+
+    <bean id="userServiceImpl" class="com.lilin.dubboserviceprovider.service.UserServiceImpl"/>
+
+    <dubbo:service interface="com.lilin.interfaces.UserService" ref="userServiceImpl" timeout="2000">
+        <!-- 细化到具体的方法-->
+        <dubbo:method name="findUser" timeout="2000"></dubbo:method>
+    </dubbo:service>
+
+    <dubbo:provider timeout="5000"></dubbo:provider>
+
+</beans>
