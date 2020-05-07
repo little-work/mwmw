@@ -22,14 +22,13 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public List<UserInfo> findUser() {
-        if(Math.random()>0.5){
-            throw new RuntimeException();
-        }
-        List<UserInfo> list=new ArrayList<>();
-        UserInfo userInfo=new UserInfo();
-        userInfo.setUsername("李林1");
-        list.add(userInfo);
-        return list;
-        //return userDao.findUser();
+        /**
+         * 模拟错误
+         */
+//        if(Math.random()>0.5){
+//            throw new RuntimeException();
+//        }
+
+        return userDao.findUser();
     }
 }

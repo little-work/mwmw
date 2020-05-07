@@ -12,7 +12,7 @@ public class MainTest {
                 new AnnotationConfigApplicationContext(AutoConfigurationRedis.class);
 
         RedisUtils redisUtils=(RedisUtils) a.getBean(RedisUtils.class);
-        System.out.println(redisUtils.getJedis().get("mykey"));
+        //System.out.println(redisUtils.getJedis().get("mykey"));
     }
 
 }

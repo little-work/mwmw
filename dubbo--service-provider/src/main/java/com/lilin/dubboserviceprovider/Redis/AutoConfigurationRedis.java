@@ -17,7 +17,7 @@ public class AutoConfigurationRedis {
     @Autowired
     private RedisProperties redisProperties;
 
-    @Bean
+    @Bean(initMethod = "getJedis")
     @ConditionalOnMissingBean
     public RedisUtils getReditUtil(){
         return new RedisUtils(redisProperties);

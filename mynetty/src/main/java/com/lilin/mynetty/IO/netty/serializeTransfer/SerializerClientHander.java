@@ -41,7 +41,7 @@ public class SerializerClientHander extends ChannelHandlerAdapter {
 
     private List<User> userInfo(){
         List list=new ArrayList();
-        for(int i=0;i<500;i++){
+        for(int i=0;i<5;i++){
             User user=new User();
             user.setAge(i);
             user.setName("lilin"+i);

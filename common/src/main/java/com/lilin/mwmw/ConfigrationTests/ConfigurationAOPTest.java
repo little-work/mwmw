@@ -1,6 +1,6 @@
 package com.lilin.mwmw.ConfigrationTests;
 
-import com.lilin.mwmw.aopApply.TargetMethod;
+import com.lilin.mwmw.aop.aopApply.TargetMethod;
 import com.lilin.mwmw.configrations.ConfigrationAOP;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

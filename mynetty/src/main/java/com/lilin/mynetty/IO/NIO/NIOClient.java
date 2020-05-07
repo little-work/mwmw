@@ -47,43 +47,6 @@ public class NIOClient implements Runnable {//服务器端的ip
     }
 
 
-    /**
-     * 首先尝试连接服务端
-     * @throws IOException
-     */
-    public void doConnect() throws IOException {
-        //如果连接成功，像多路复用器selector监听读请求
-        if(socketChannel.connect(new InetSocketAddress(this.host, this.port))){
-            socketChannel.register(selector, SelectionKey.OP_READ);
-            //执行写操作，像服务器端发送数据
-            //doWrite(socketChannel);
-        }else {
-            //监听连接请求
-            socketChannel.register(selector, SelectionKey.OP_CONNECT);
-        }
-    }
-
-    /**
-     * 请求服务器
-     * @param sc
-     * @throws IOException
-     */
-    public static void doWrite(SocketChannel sc) throws IOException {
-        //构造请求消息体
-        byte [] bytes = "你是我是客户端".getBytes();
-        //构造ByteBuffer
-        ByteBuffer write = ByteBuffer.allocate(bytes.length);
-        //将消息体写入发送缓冲区
-        write.put(bytes);
-        write.flip();
-        //调用channel的发送方法异步发送
-        sc.write(write);
-        //通过hasRemaining方法对发送结果进行判断，如果消息全部发送成功，则返回true
-//        if(!write.hasRemaining()){
-//           log.info("send order 2 server successd");
-//        }
-    }
-
     @Override
     public void run() {
         try {
@@ -164,6 +127,43 @@ public class NIOClient implements Runnable {//服务器端的ip
                 }
             }
         }
+    }
+
+    /**
+     * 首先尝试连接服务端
+     * @throws IOException
+     */
+    public void doConnect() throws IOException {
+        //如果连接成功，像多路复用器selector监听读请求
+        if(socketChannel.connect(new InetSocketAddress(this.host, this.port))){
+            socketChannel.register(selector, SelectionKey.OP_READ);
+            //执行写操作，像服务器端发送数据
+            //doWrite(socketChannel);
+        }else {
+            //监听连接请求
+            socketChannel.register(selector, SelectionKey.OP_CONNECT);
+        }
+    }
+
+    /**
+     * 请求服务器
+     * @param sc
+     * @throws IOException
+     */
+    public static void doWrite(SocketChannel sc) throws IOException {
+        //构造请求消息体
+        byte [] bytes = "你是我是客户端".getBytes();
+        //构造ByteBuffer
+        ByteBuffer write = ByteBuffer.allocate(bytes.length);
+        //将消息体写入发送缓冲区
+        write.put(bytes);
+        write.flip();
+        //调用channel的发送方法异步发送
+        sc.write(write);
+        //通过hasRemaining方法对发送结果进行判断，如果消息全部发送成功，则返回true
+//        if(!write.hasRemaining()){
+//           log.info("send order 2 server successd");
+//        }
     }
 
 }

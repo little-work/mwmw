@@ -1,8 +1,8 @@
 package com.lilin.mwmw.configrations;
 
 
-import com.lilin.mwmw.aopApply.MyAspects;
-import com.lilin.mwmw.aopApply.TargetMethod;
+import com.lilin.mwmw.aop.aopApply.MyAspects;
+import com.lilin.mwmw.aop.aopApply.TargetMethod;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 

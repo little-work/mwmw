@@ -1,7 +1,7 @@
 package com.lilin.mwmw.controller;
 
 
-import com.lilin.mwmw.DynamicDatasource.TargetDataSource;
+import com.lilin.mwmw.dynamicDatasource.TargetDataSource;
 import com.lilin.mwmw.bo.User;
 import com.lilin.mwmw.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

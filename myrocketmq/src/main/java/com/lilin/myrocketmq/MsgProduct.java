@@ -14,6 +14,7 @@ public class MsgProduct {
     public static void main(String[] args){
         DefaultMQProducer producer = new DefaultMQProducer("Producer");
         producer.setNamesrvAddr("127.0.0.1:9876");
+        producer.setInstanceName("producer");
         try {
             producer.start();
 

@@ -23,7 +23,7 @@ public class SpringmvcController {
     public String insert(HttpServletRequest request, HttpServletResponse response, String param) {
         myService.insert(null);
         smService.insert(null);
-        return null;
+        return "ee";
     }
     @MyRequestMapping("update")
     public String update(HttpServletRequest request, HttpServletResponse response, String param) {
