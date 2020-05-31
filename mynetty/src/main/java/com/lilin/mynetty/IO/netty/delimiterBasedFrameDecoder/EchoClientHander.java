@@ -11,12 +11,12 @@ public class EchoClientHander extends ChannelHandlerAdapter {
 
 
 
-    @Override
+   /* @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         for(int i=0;i<50;i++){
             ctx.writeAndFlush(Unpooled.copiedBuffer(ECHO_REQ.getBytes()));
         }
-    }
+    }*/
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {

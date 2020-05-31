@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * 但是Bean的实例还没有创建   来定制和修改BeanFactory中的内容
  *
  *
- * incoker BeanFactoryPostProcessor(BeanFactory)
+ * incoker BeanFactoryPostProcessor(Bean)
  *          1、直接在BeanFactory中找到所有BeanFactoryPostProcessor组件并执行他们的方法
  *          2、在初始化创建其他组件之前
  */

@@ -1,24 +1,22 @@
-package com.lilin.mynetty.IO.netty.delimiterBasedFrameDecoder;
+package com.lilin.mynetty.IO.netty.heartbeat;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.DelimiterBasedFrameDecoder;
-import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import io.netty.handler.timeout.IdleStateHandler;
 
-public class EchoServer {
+import java.util.concurrent.TimeUnit;
+
+public class Server {
 
     public void bind(int port) throws InterruptedException {
+        //hander
         EventLoopGroup bossGroup = new NioEventLoopGroup();
+        //childHandler
         EventLoopGroup workGroup = new NioEventLoopGroup();
 
         try {
@@ -30,11 +28,14 @@ public class EchoServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            ByteBuf delimiter = Unpooled.copiedBuffer("$_".getBytes());
-                            socketChannel.pipeline()
-                                    .addLast(new DelimiterBasedFrameDecoder(1024, delimiter));
-                            socketChannel.pipeline().addLast(new StringDecoder());
-                            socketChannel.pipeline().addLast(new EchoServerHander());
+                            ChannelPipeline pipeline=socketChannel.pipeline();
+                            //一定时间内检测有没有读、写、读写事件（空闲检测）
+                            /**
+                             * 读是读客户端的内容
+                             * 写是向服务器写事件
+                             */
+                            pipeline.addLast(new IdleStateHandler(5,7,10, TimeUnit.SECONDS));
+                            pipeline.addLast(new MyServerHandler());
                         }
                     });
             ChannelFuture f = b.bind(port).sync();
@@ -44,9 +45,8 @@ public class EchoServer {
             workGroup.shutdownGracefully();
         }
     }
-
     public static void main(String[] args) throws Exception {
         int port = 8080;
-        new EchoServer().bind(port);
+        new Server().bind(port);
     }
 }

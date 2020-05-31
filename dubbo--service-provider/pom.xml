@@ -19,16 +19,24 @@
     </properties>
 
     <dependencies>
+
         <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
             <version>2.9.0</version>
         </dependency>
-        <dependency>
+
+
+
+        <!--<dependency>
             <groupId>org.springframework.session</groupId>
             <artifactId>spring-session-data-redis</artifactId>
-        </dependency>
+        </dependency>-->
+
+
+
+
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-pool2 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -43,7 +51,7 @@
         </dependency>
 
 
-        <!--        dubbo相关配置-->
+        <!-- dubbo相关配置-->
         <dependency>
             <groupId>com.lilin</groupId>
             <artifactId>dubbo-interfaces</artifactId>
@@ -68,6 +76,41 @@
             <groupId>com.101tec</groupId>
             <artifactId>zkclient</artifactId>
             <version>0.10</version>
+        </dependency>
+
+
+        <!--定时任务quartz不需要springboot自动配置的时候需要引入的包-->
+        <!--<dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz-jobs</artifactId>
+            <version>2.2.3</version>
+        </dependency>
+        &lt;!&ndash;定时任务需要依赖context模块&ndash;&gt;
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>-->
+        <!--<dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>mchange-commons-java</artifactId>
+            <version>0.2.11</version>
+        </dependency>-->
+
+
+       <!-- springboot2.0支持quartz自动配置引入的包-->
+       <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-quartz</artifactId>
         </dependency>
 
     </dependencies>

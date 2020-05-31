@@ -14,9 +14,16 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String login(){
-        return "eqeqw";
+        //同步返回
+        //loginService.testSync();
+        //异步返回
+        //loginService.testAsync();
+        loginService.task();
+        return "服务器执行完返回结果-task";
         //return loginService.getName();
     }
+
+
 
 
 

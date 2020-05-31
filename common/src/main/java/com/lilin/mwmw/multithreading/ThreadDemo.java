@@ -30,10 +30,27 @@ public class ThreadDemo implements Runnable {
     @Override
     public void run() {
         synchronized (object) {// object 表示同步监视器,是同一个同步对象
+            System.out.println(Thread.currentThread().getName()+"获得了锁");
             while (num <= max) {
-                object.notifyAll();// 唤醒所有线程,(wait,notify和notifyAll只能在同步控制方法或者同步控制块里面使用,而sleep可以在任何地方使用)
+                /**
+                 * 线程1执行获取了锁  执行 notifyAll montior对象中的_WaitSet列表中没有
+                 * ObjectWaiter对象
+                 * 1、如果当前_WaitSet为空，即没有正在等待的线程，则直接返回；
+                 * 2、通过for循环取出_WaitSet的ObjectWaiter节点，并根据不同策略，加入到_EntryList或则进行自旋操作。
+                 */
+                object.notifyAll();
                 try {
                     while (count % threadsNum != (n - 1)) {// 找出下一个线程 不正确的线程等待
+                        System.out.println(Thread.currentThread().getName()+"等待被唤醒");
+                        /**
+                         *   object.wait()方法最终通过ObjectMonitor的 wait(jlong millis, bool interruptable, TRAPS)实现
+                         *
+                         * 1、将当前线程封装成ObjectWaiter对象node
+                         *
+                         * 2、通过ObjectMonitor::AddWaiter方法将node添加到_WaitSet列表中
+                         *
+                         * 3、通过ObjectMonitor::exit方法释放当前的ObjectMonitor对象，这样其它竞争线程就可以获取该ObjectMonitor对象
+                         */
                         object.wait();// 此线程让出资源，等待,(sleep()释放资源不释放锁，而wait()释放资源释放锁；)
                     }
                     System.out.print(Thread.currentThread().getName() + "\t");//输出线程名字
@@ -44,7 +61,7 @@ public class ThreadDemo implements Runnable {
                             break;//跳出当前while循环
                         }
                     }
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 System.out.println();

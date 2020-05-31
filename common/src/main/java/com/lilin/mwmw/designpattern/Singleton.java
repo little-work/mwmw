@@ -10,6 +10,7 @@ public class Singleton {
 
     private static Map<String, Object> ioc = new ConcurrentHashMap<>();
     private static Singleton singleton = null;
+    private volatile static Singleton singleton2 = null;
 
     private Singleton() {
 
@@ -26,7 +27,21 @@ public class Singleton {
 
 
     /**
+     * 高并发
+     */
+    public static Object getBean() {
+        if (singleton2 == null) {
+            synchronized (ioc) {
+                if(singleton2==null)
+                singleton2 = new Singleton();
+            }
+        }
+        return singleton2;
+    }
+
+    /**
      * spring容器单例设计模式
+     *
      * @param beanName
      * @return
      * @throws Exception
@@ -34,12 +49,12 @@ public class Singleton {
     public static Object getBean(String beanName) throws Exception {
         synchronized (ioc) {
             if (ioc.containsKey(beanName)) {
-                System.out.println("直接拿"+Thread.currentThread().getName()+ioc);
+                System.out.println("直接拿" + Thread.currentThread().getName() + ioc);
                 return ioc.get(beanName);
             } else {
                 Object obj = Class.forName(beanName).newInstance();
                 ioc.put(beanName, obj);
-                System.out.println("创建bean"+Thread.currentThread().getName()+ioc);
+                System.out.println("创建bean" + Thread.currentThread().getName() + ioc);
                 return obj;
             }
         }

@@ -31,6 +31,8 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
 
 
 
+
+
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
 
@@ -256,4 +258,6 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
         Calendar time = new GregorianCalendar();
         response.headers().set(DATE, dateFormatter.format(time.getTime()));
     }
+
+    
 }

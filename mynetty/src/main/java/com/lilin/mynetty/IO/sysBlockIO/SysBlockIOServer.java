@@ -1,12 +1,11 @@
 package com.lilin.mynetty.IO.sysBlockIO;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 public class SysBlockIOServer {
 
@@ -16,7 +15,7 @@ public class SysBlockIOServer {
              * 这行代码其实就是调用openjdk中的bind0的本地native方法
              */
             ServerSocket serverSocket = new ServerSocket(8080);
-            ServerSocketThreadPool pool=new ServerSocketThreadPool(5,10);
+
             while (true){
                 /**
                  * 单线程模式下面，接受一个请求后并处理
@@ -29,25 +28,37 @@ public class SysBlockIOServer {
                  * 只是一个客户端请求过来 开启多线程进行处理请求，但是多个请求并发过来
                  * 就只能等待 因为一次只能accept一个客户请求
                  */
-                pool.execute(new SocketHander(socket));
+                new Thread(() -> {
+                    BufferedReader in = null;
+                    PrintWriter out = null;
+                    try {
+                        in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                        String context;
+                        while ((context = in.readLine()) != null) {
+                            System.out.println("收到客户端的消息：" + context);
+                        }
+                        //this.socket.shutdownInput();
+                        out = new PrintWriter(socket.getOutputStream(), true);
+                        out.println("服务器返回给客户端的消息");
+                        out.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            in.close();
+                            if (socket != null) {
+                                socket.close();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        out.close();
+                    }
+                }).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-    }
-}
-
-class ServerSocketThreadPool {
-
-    private ExecutorService executor;
-
-    public ServerSocketThreadPool(int core,int max) {
-        this.executor = new ThreadPoolExecutor(core, max, 60L,
-                TimeUnit.SECONDS, new LinkedBlockingQueue<>());
-    }
-
-    public void execute(Runnable task) {
-        executor.execute(task);
     }
 }

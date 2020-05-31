@@ -1,6 +1,6 @@
 package com.lilin.mwmw.springMybatisTheory;
 
-import com.lilin.mwmw.utils.FileUtils;
+import com.lilin.mwmw.utils.MyFileUtils;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -25,7 +25,7 @@ public class ImportBeanDenfinitionReg implements ImportBeanDefinitionRegistrar {
         for (String pkg : annoAttrs.getStringArray("basePackages")) {
             if (StringUtils.hasText(pkg)) {
                 //获取包下面所有类的全名
-                Set<String> set = FileUtils.getClassName(pkg);
+                Set<String> set = MyFileUtils.getClassName(pkg);
                 //遍历包下面所有的类
                 for (String classFullName : set) {
                     BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition(MyMapperFactoryBean.class);

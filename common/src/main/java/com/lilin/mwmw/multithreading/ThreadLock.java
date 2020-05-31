@@ -92,6 +92,7 @@ public class ThreadLock {
             System.out.println(thread.getName() + "得到了锁");
             for (int i = 0; i < 5; i++) {
                 arrayList.add(i);
+                continue;
             }
             Thread.sleep(2000);
         } catch (Exception e) {

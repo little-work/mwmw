@@ -23,7 +23,7 @@ public class UnsafeInstance {
     public static void main(String[] args) throws Exception {
         UnsafeInstance unsafeInstance=new UnsafeInstance();
         Unsafe unsafe= getUnsafe();
-        //value属性相当于UnsafeInstance对象的偏移地址
+        //valueOffset属性相当于UnsafeInstance对象中value相当于UnsafeInstance地址的偏移地址
         valueOffset = unsafe.objectFieldOffset
                 (UnsafeInstance.class.getDeclaredField("value"));
         //从对象的指定偏移地址处读取一个int

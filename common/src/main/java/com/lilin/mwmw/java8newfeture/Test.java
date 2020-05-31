@@ -34,16 +34,23 @@ public class Test {
          */
 //        FuncitonInterface<RefClass> f3=RefClass::new;
 //        RefClass refClass=f3.getObject();
-        RefClass refClass=new RefClass();
+       /* RefClass refClass=new RefClass();
         RefInterface refInterface2=refClass::add;
-        System.out.println(refInterface2.add(3,7));
+        System.out.println(refInterface2.add(3,7));*/
 
 
         /**
          *
          */
-        adddddd(refClass::add);
+        //adddddd(refClass::add);
 
+
+
+        voidfwfqw(()->{
+            Person p=new Person();
+            p.setName("lilin");
+            return p;
+        });
     }
 
 
@@ -51,5 +58,10 @@ public class Test {
         return refInterface.add(2,5);
     }
 
+
+
+    public static void voidfwfqw(FuncitonInterface<?> obj ){
+        System.out.println(obj.getObject());
+    }
 
 }

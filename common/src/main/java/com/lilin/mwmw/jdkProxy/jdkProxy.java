@@ -11,11 +11,11 @@ public class jdkProxy {
 
 
     public static void main(String[] args) throws IOException {
-        UserServiceImpl usim=new UserServiceImpl();
-        UserService userService=(UserService) Proxy.newProxyInstance(jdkProxy.class.getClassLoader(),
-                new Class[]{UserService.class},(proxy,method,arg1)->{
+        UserServiceImpl usim = new UserServiceImpl();
+        UserService userService = (UserService) Proxy.newProxyInstance(jdkProxy.class.getClassLoader(),
+                new Class[]{UserService.class}, (proxy, method, arg1) -> {
                     System.out.println("前置方法");
-                    Object obj =method.invoke(usim,arg1);
+                    Object obj = method.invoke(usim, arg1);
                     System.out.println("后置方法");
                     return obj;
                 });
@@ -30,9 +30,8 @@ public class jdkProxy {
     }
 
 
-
     public static void createProxyClass() throws IOException {
-       byte[] bytes=ProxyGenerator.generateProxyClass("UserService$Proxy",new Class[]{UserService.class});
+        byte[] bytes = ProxyGenerator.generateProxyClass("UserService$Proxy", new Class[]{UserService.class});
 
         Files.write(new File("D:\\mwmw\\mwmw\\common\\src\\main\\java\\com\\lilin\\mwmw\\jdkProxy\\UserService$Proxy.class").toPath(),
                 bytes);

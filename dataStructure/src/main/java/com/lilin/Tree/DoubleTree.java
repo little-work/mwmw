@@ -1,16 +1,21 @@
-package com.lilin.mwmw.dataStructure.Tree;
+package com.lilin.Tree;
 
 public class DoubleTree {
 
 
     public static void main(String[] args) {
         DoubleTree doubleTree = new DoubleTree();
-        doubleTree.insert(new TreeNode(3));
-        doubleTree.insert(new TreeNode(1));
-        doubleTree.insert(new TreeNode(4));
+        doubleTree.insert(new TreeNode(10));
         doubleTree.insert(new TreeNode(7));
-
-        preOrder(doubleTree.root);
+        doubleTree.insert(new TreeNode(11));
+        doubleTree.insert(new TreeNode(5));
+        doubleTree.insert(new TreeNode(8));
+        doubleTree.insert(new TreeNode(3));
+        doubleTree.insert(new TreeNode(4));
+        doubleTree.insert(new TreeNode(12));
+        doubleTree.insert(new TreeNode(13));
+        doubleTree.insert(new TreeNode(14));
+        infixOrder(doubleTree.root);
     }
 
 
@@ -60,7 +65,7 @@ public class DoubleTree {
     }
 
     //中序遍历
-    public void infixOrder(TreeNode current) {
+    public static void infixOrder(TreeNode current) {
         if (current != null) {
             infixOrder(current.leftTreeNode);
             System.out.print(current.data + " ");

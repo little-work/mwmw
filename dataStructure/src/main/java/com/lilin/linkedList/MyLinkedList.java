@@ -267,21 +267,36 @@ public class MyLinkedList {
 
         while (cur!=null){
             cur_next=cur.next;  //将当前节点的下一个节点暂时保存一下  下一次循环用当前节点的一个节点
-            /**
-             * 将当前节点的下一个节点的值引用指向新节点的下一个节点的值引用  这样当前节点就连接在
-             * 新节点的头部 并且每次循环新的节点的时候都是插在头部
-             */
+
+            //这两步就是头插法  先将新节点的下一个节点的地址值赋给当前节点的下一个节点 第一次为空（那就让当前节点的next指向null），
+            // 再将当前节点 赋给新节点的下一个节点 这样当前节点就作为头结点插入进去了
             cur.next=newNode.next;
-            /**
-             * 将新节点的下一个节点指向当前节点  这样就连起来了
-             */
             newNode.next=cur;
+
             //将当前节点的下一个节点赋值给当前节点 继续下一次循环
             cur=cur_next;
         }
         headNode.next=newNode.next;
         return headNode;
     }
+
+    /**
+     * 递归-翻转链表
+     */
+    public LinkNode reverseList(LinkNode current) {
+        if (current == null || current.next == null)
+            //遍历到最后返回最后一个节点啊 这将作为头结点
+            return current;
+        LinkNode curt_next = current.next;
+        LinkNode newHead = reverseList(curt_next);
+        //将倒数第二个节点连接到最后一个节点的下一个节点
+        curt_next.next = current;
+        //将倒数第二个节点指向空
+        current.next = null;
+        //返回新的头结点
+        return newHead;
+    }
+
 }
 
 class LinkNode<T> {
