@@ -2,12 +2,14 @@ package com.lilin.mwmw.bo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.function.BooleanSupplier;
 
 @Data
+@AllArgsConstructor
 public class Login {
 
 
@@ -15,13 +17,9 @@ public class Login {
     private String userName;
     private String password;
     private String userType;
+    private User user;
 
     public Login(){}
-    public Login(String userName,String password,String userType){
-        this.userName=userName;
-        this.password=password;
-        this.userType=userType;
-    }
 
 
     @Override
@@ -53,8 +51,8 @@ public class Login {
     }
 
     public static void main(String[] args) {
-        Login login1=new Login("liiln","123456","1");
-        Login login2=new Login("liiln","123456","2");
+        Login login1=new Login("liiln","123456","1",null);
+        Login login2=new Login("liiln","123456","2",null);
         System.out.println(login1.equals(login2));
         System.out.println(login1.hashCode()==login2.hashCode());
 

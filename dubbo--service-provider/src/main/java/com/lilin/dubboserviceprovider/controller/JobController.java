@@ -18,7 +18,11 @@ public class JobController {
     private Quartz appQuartzService;
 
 
-    //添加一个job
+    /**
+     * 添加一个job 可以实现异步操作
+     * @return
+     * @throws Exception
+     */
     @RequestMapping(value = "/addJob", method = RequestMethod.GET)
     public String addjob() throws Exception {
         AppQuartz appQuartz = new AppQuartz();

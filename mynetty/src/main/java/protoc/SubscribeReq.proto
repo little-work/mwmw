@@ -1,0 +1,25 @@
+syntax = "proto2";
+
+package protobuf;
+option java_package = "com.lilin.mynetty.IO.protobuf";
+
+option java_outer_classname="SubscribeReqProto";
+
+message SubscribeRequest{
+    required int32 subReqID = 1;
+    required string userName = 2;
+    optional string productName = 3[default = "mydefault"];
+    required string address = 4;
+}
+
+message SubscribeResponse{
+    required int32 subRespID = 1;
+    required string age = 2;
+    required string isvip = 3;
+    required string location = 4;
+}
+
+service Tts {
+    rpc createRec(SubscribeRequest) returns (SubscribeResponse);
+
+}

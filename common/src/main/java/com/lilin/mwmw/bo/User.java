@@ -2,6 +2,7 @@ package com.lilin.mwmw.bo;
 
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Max;

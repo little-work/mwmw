@@ -3,6 +3,7 @@ package com.lilin.dubboserviceprovider.quartz;
 import com.lilin.dubboserviceprovider.mybatis.entity.AppQuartz;
 import org.quartz.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;

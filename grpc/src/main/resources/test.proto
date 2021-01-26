@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option java_multiple_files = true;  //是不是生成多个文件，要不然工具生成都在一个类之中
+option java_package = "com.acupt.grpc.proto";
+option java_outer_classname = "HelloProto";
+
+package com.acupt.grpc;
+
+service HelloService {
+    rpc hello (stream InvokeRequest) returns ( stream InvokeResponse) {
+    }
+
+    rpc hello2 (InvokeRequest) returns ( stream InvokeResponse) {
+    }
+
+    rpc hello3 (stream InvokeRequest) returns (InvokeResponse) {
+    }
+
+    rpc hello4 (InvokeRequest) returns (InvokeResponse) {
+    }
+}
+
+message InvokeRequest {
+    map<string,string>  mapParam=1;
+    string name = 2;
+}
+
+message InvokeResponse {
+    string msg = 1;
+}

@@ -8,6 +8,10 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.*;
 
 @Service
@@ -60,13 +64,13 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public void testSync(){
-        task();
+        task2();
     }
 
     @Override
     public void testAsync(){
-        pool.execute(() -> task());
-
+        //不使用@Async注解 实现异步
+        pool.execute(() -> task2());
     }
 
 
@@ -84,5 +88,15 @@ public class LoginServiceImpl implements LoginService {
         }
     }
 
+    public void task2(){
+        for(int i=0;i<5;i++){
+            try {
+                Thread.sleep(1000);
+                System.out.println("当前获取的number为:"+i);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

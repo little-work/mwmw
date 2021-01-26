@@ -232,23 +232,24 @@ public class MyLinkedList {
 
     /**
      * 反向遍历这个链表  返回新的反转后的链表
+     *
      * @return
      */
     public LinkNode Reversal() {
         LinkNode<String> newNode = new LinkNode<>(0, "");
-        LinkNode temp=newNode;
+        LinkNode temp = newNode;
         for (int i = this.length(); i > 0; i--) {
-            if(temp.next==null){
+            if (temp.next == null) {
                 /**
                  * LinkNode<String> linkNode = this.get(i);
                  * 地址引用问题
                  * 此时this.get(i)只是把 地址值 发过来 并不是 新的对象  把5的地址赋给temp 5的下一个为null
                  * 然后  把4赋值过来  4的下一个为5 就不满足temp.next==null了
                  */
-                System.out.println(this.get(i).no+(String)this.get(i).data);
-                LinkNode<String> linkNode = new LinkNode<>(this.get(i).no,(String)this.get(i).data);
-                temp.next=linkNode;
-                temp=temp.next;
+                System.out.println(this.get(i).no + (String) this.get(i).data);
+                LinkNode<String> linkNode = new LinkNode<>(this.get(i).no, (String) this.get(i).data);
+                temp.next = linkNode;
+                temp = temp.next;
             }
         }
         return newNode;
@@ -259,24 +260,24 @@ public class MyLinkedList {
      */
     public LinkNode Reversa2() {
         LinkNode cur = headNode.next;
-        LinkNode cur_next=null;
+        LinkNode cur_next = null;
         LinkNode<String> newNode = new LinkNode<>(0, "");
-        if(headNode.next==null || headNode.next.next==null){
+        if (headNode.next == null || headNode.next.next == null) {
             System.out.println("空节点或者只有一个节点不需要反转");
         }
 
-        while (cur!=null){
-            cur_next=cur.next;  //将当前节点的下一个节点暂时保存一下  下一次循环用当前节点的一个节点
+        while (cur != null) {
+            cur_next = cur.next;  //将当前节点的下一个节点暂时保存一下  下一次循环用当前节点的一个节点
 
             //这两步就是头插法  先将新节点的下一个节点的地址值赋给当前节点的下一个节点 第一次为空（那就让当前节点的next指向null），
             // 再将当前节点 赋给新节点的下一个节点 这样当前节点就作为头结点插入进去了
-            cur.next=newNode.next;
-            newNode.next=cur;
+            cur.next = newNode.next;
+            newNode.next = cur;
 
             //将当前节点的下一个节点赋值给当前节点 继续下一次循环
-            cur=cur_next;
+            cur = cur_next;
         }
-        headNode.next=newNode.next;
+        headNode.next = newNode.next;
         return headNode;
     }
 
@@ -305,7 +306,7 @@ class LinkNode<T> {
     public T data;
     public LinkNode<T> next;
 
-    public LinkNode(){
+    public LinkNode() {
 
     }
 

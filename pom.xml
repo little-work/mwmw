@@ -11,6 +11,9 @@
         <module>dubbo-interfaces</module>
         <module>dubbo--service-provider</module>
         <module>dubbo-service-consumer</module>
+        <module>grpc</module>
+        <module>iatEngine</module>
+        <module>srt-reader</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

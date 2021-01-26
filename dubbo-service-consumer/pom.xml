@@ -19,11 +19,21 @@
     </properties>
 
     <dependencies>
+
+
         <dependency>
             <groupId>com.lilin</groupId>
             <artifactId>dubbo-interfaces</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>com.github.briandilley.jsonrpc4j</groupId>
+            <artifactId>jsonrpc4j</artifactId>
+            <version>1.4.6</version>
+        </dependency>
+
         <!-- Dubbo -->
         <dependency>
             <groupId>com.alibaba.boot</groupId>
@@ -49,6 +59,11 @@
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz-jobs</artifactId>
             <version>2.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.5.3</version>
         </dependency>
     </dependencies>
 

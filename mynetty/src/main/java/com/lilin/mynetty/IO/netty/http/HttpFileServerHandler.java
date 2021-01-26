@@ -30,9 +30,6 @@ public class HttpFileServerHandler extends SimpleChannelInboundHandler<FullHttpR
     public static final String HTTP_DATE_GMT_TIMEZONE = "GMT";
 
 
-
-
-
     @Override
     protected void messageReceived(ChannelHandlerContext ctx, FullHttpRequest request) throws Exception {
 

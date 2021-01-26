@@ -7,6 +7,7 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.http.HttpObjectAggregator;
 import io.netty.handler.codec.http.HttpRequestDecoder;
 import io.netty.handler.codec.http.HttpResponseEncoder;
@@ -28,10 +29,11 @@ public class Server {
                         protected void initChannel(SocketChannel socketChannel) {
                             socketChannel.pipeline()
                                     .addLast("http-decoder", new HttpRequestDecoder())
-                                    .addLast("http-aggregator", new HttpObjectAggregator(65536))
+                                    .addLast("http-aggregator", new HttpObjectAggregator(655360))
                                     .addLast("http-enocder", new HttpResponseEncoder())
                                     .addLast("http-chunked", new ChunkedWriteHandler())
-                                    .addLast("fileServerHandler", new HttpFileServerHandler());
+                                    //.addLast("fileServerHandler", new HttpFileServerHandler());
+                                    .addLast("fileServerHandler", new HttpServerHandler());
                         }
                     });
             ChannelFuture f = b.bind(port).sync();
@@ -43,7 +45,7 @@ public class Server {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        int port = 8080;
+        int port = 8887;
         new Server().bind(port);
     }
 }

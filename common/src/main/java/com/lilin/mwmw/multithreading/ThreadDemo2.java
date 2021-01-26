@@ -2,6 +2,7 @@ package com.lilin.mwmw.multithreading;
 
 public class ThreadDemo2 implements Runnable{
 
+    @sun.misc.Contended("tlr")
     int q=0;
 
     @Override

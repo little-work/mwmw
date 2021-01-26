@@ -26,7 +26,7 @@ public class jdkProxy {
          */
         userService.getName();
         userService.getAge();
-        createProxyClass();
+        //createProxyClass();
     }
 
 

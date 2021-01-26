@@ -1,10 +1,12 @@
 package com.lilin.dubboserviceprovider.quartz;
 
-import org.quartz.Job;
-import org.quartz.JobDataMap;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+import org.quartz.*;
 
+
+/**
+ * 不允许并发执行
+ */
+@DisallowConcurrentExecution
 public class JobTwo implements Job {
 
     @Override
